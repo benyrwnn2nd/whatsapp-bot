@@ -1,0 +1,18 @@
+{
+  "name": "whatsapp-bot",
+  "version": "1.0.0",
+  "description": "Simple WhatsApp bot using Baileys library",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.16",
+    "axios": "^1.9.0",
+    "chess.js": "^1.0.0-beta.8",
+    "chess-image-generator": "^1.0.9",
+    "pino": "^9.6.0",
+    "qrcode": "^1.5.4"
+  }
+}
