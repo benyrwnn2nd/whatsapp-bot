@@ -1,0 +1,2 @@
+[phases.setup]
+nixPkgs = ["nodejs", "libuuid", "cairo", "pango", "freetype", "fontconfig"]
