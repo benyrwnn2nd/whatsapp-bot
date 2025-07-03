@@ -9,17 +9,17 @@ export default {
     const { from, reply } = msg;
     const igUrl = args[0];
     try {
-      const apiUrl = `https://flowfalcon.dpdns.org/download/instagram?url=${encodeURIComponent(igUrl)}`;
+      const apiUrl = `https://api.nekorinn.my.id/downloader/instagram?url=${encodeURIComponent(igUrl)}`;
       const { data } = await axios.get(apiUrl);
-      const { title, downloadUrls } = data.result;
+      const { caption, downloadUrl } = data.result.metadata;
       
-      const captionBase = `*Judul:* ${title || 'Tidak ada judul'}\n*Sumber:* Instagram\n*Tautan Asli:* ${igUrl}\n`;
+      const captionBase = `*Judul:* ${caption || '-'}\n*Sumber:* Instagram\n*Tautan Asli:* ${igUrl}\n`;
       let sentCount = 0;
 
-      for (const mediaUrl of downloadUrls) {
+      for (const mediaUrl of downloadUrl) {
         try {
           const isVideo = mediaUrl.endsWith('.mp4') || mediaUrl.includes('video') || mediaUrl.includes('.mp4?');
-          const caption = `${captionBase}*Media ${sentCount + 1} dari ${downloadUrls.length}*`;
+          const caption = `${captionBase}*Media ${sentCount + 1} dari ${downloadUrl.length}*`;
 
           if (isVideo) {
             await sock.sendMessage(from, {
